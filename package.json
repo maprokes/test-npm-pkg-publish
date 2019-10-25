@@ -1,0 +1,22 @@
+{
+  "name": "test-npm-pkg-publish",
+  "version": "1.0.0",
+  "description": "Test pkg to try actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maprokes/test-npm-pkg-publish.git"
+  },
+  "keywords": [
+    "test"
+  ],
+  "author": "Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maprokes/test-npm-pkg-publish/issues"
+  },
+  "homepage": "https://github.com/maprokes/test-npm-pkg-publish#readme"
+}
