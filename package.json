@@ -1,5 +1,5 @@
 {
-  "name": "test-npm-pkg-publish",
+  "name": "@maprokes/test-npm-pkg-publish",
   "version": "1.0.6-martinkokot.0",
   "description": "Test pkg to try actions",
   "main": "index.js",
