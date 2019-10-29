@@ -29,6 +29,8 @@ jobs:
           node-version: 12
           registry-url: https://registry.npmjs.org/
       - run: npm config set scope "@prokesma"
+      - run: git config --global user.email "martin.prokes@profiq.cz"
+      - run: git config --global user.name "prokesma"
       - run: npm version 1.0.$(date +%s)
       - run: npm ci
       - run: npm publish
