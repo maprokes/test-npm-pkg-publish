@@ -37,18 +37,18 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
   publish-gpr:
     needs: build
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v1
-        - uses: actions/setup-node@master
-          with:
-            node-version: 12
-            registry-url: https://npm.pkg.github.com/
-            scope: '@prokesma'
-        - run: git config --global user.email "martin.prokes@profiq.cz"
-        - run: git config --global user.name "prokesma"
-        - run: npm ci
-        - run: npm version 1.0.$GITHUB_SHA
-        - run: npm publish
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@master
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: '@prokesma'
+      - run: git config --global user.email "martin.prokes@profiq.cz"
+      - run: git config --global user.name "prokesma"
+      - run: npm ci
+      - run: npm version 1.0.$GITHUB_SHA
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
