@@ -48,7 +48,7 @@ jobs:
       - run: git config --global user.email "martin.prokes@profiq.cz"
       - run: git config --global user.name "prokesma"
       - run: npm ci
-      - run: npm version 1.0.$${{ github.sha }}
+      - run: npm version 1.0.${{ github.sha }}
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
