@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
-      - name: Update package version and setup git
+      # - name: Update package version and setup git
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
