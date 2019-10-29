@@ -1,6 +1,6 @@
 {
   "name": "test-npm-pkg-publish",
-  "version": "1.0.6",
+  "version": "1.0.6-build12344567789123456",
   "description": "Test pkg to try actions",
   "main": "index.js",
   "scripts": {
