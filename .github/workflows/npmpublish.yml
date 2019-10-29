@@ -18,7 +18,7 @@ jobs:
       - run: npm ci
       # - run: npm test
 
-  publish-npm-and-gpr:
+  publish-npm:
     needs: build
     runs-on: ubuntu-latest
     steps:
@@ -28,22 +28,27 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm config set scope "@martinprokes"
       - run: git config --global user.email "martin.prokes@profiq.cz"
       - run: git config --global user.name "prokesma"
-      - run: npm version 1.0.$(date +%s)
+      - run: npm version 1.0.$GITHUB_SHA
       - run: npm ci
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
-  # Publish to Github Package Registry
+publish-gpr:
+  needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
       - uses: actions/setup-node@master
         with:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@prokesma'
+      - run: git config --global user.email "martin.prokes@profiq.cz"
+      - run: git config --global user.name "prokesma"
       - run: npm ci
+      - run: npm version 1.0.$GITHUB_SHA
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
