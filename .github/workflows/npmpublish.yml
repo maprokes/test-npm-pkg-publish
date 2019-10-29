@@ -18,25 +18,24 @@ jobs:
       - run: npm ci
       # - run: npm test
 
-  publish-npm:
+  publish-npm-and-gpr:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@master
+      - name: Update package version and setup git
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
+      - run: npm config set scope "@prokesma"
+      - run: npm version 1.0.$(date +%s)
       - run: npm ci
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
-  publish-gpr:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
+  # Publish to Github Package Registry
       - uses: actions/setup-node@master
         with:
           node-version: 12
